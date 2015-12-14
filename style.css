@@ -1,16 +1,14 @@
-h4 {
-    position:absolute;
-    left: 450px;
-    top: 100px;
-}
 
-#currentG {
-    position: absolute;
-    left :600px;
-    top: 120px;
+canvas{
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  top: 250px;
 }
-#buttonG {
-    position: absolute;
-    left :642px;
-    top: 120px;
+#container{
+  width: 100%;
+  text-align: center;
+}
+#gravityChanger{
+  padding-bottom: 1%;
 }

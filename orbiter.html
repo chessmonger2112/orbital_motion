@@ -1,22 +1,21 @@
 <html>
-    <head>
-      <link rel="stylesheet" type="text/css" href="style.css">
-    </head>
-
-    <body>
-        <p>The distance between the two objects is <b id='boldStuff2'></b> </p>
-        <p>The periapsis is <b id='periLabel'></b> </p>
-        <p>The apoapsis is <b id='apoaLabel'></b> </p>
-        <p>The difference between the periapsis and the apoapsis is <b id='difLabel'></b> </p>
-        <p>Total Energy is <b id='eLabel'></b> </p>
-        <h4>Change the gravity to </h4>
-        <button id='invSqr'>Inverse square</button>
-        <button id='invLine'>Inverse linear</button>
-        <button id='line'>Linear</button>
-        <input id='currentG' size="1"></input>
-        <button id='buttonG'>Change</button>
-        <canvas id="c" width="1500" height="800" style="border:1px solid #000000;"></canvas>
-
-    </body>
-	<script src="main.js"></script>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <div id="container">
+      <p>The distance between the two objects is <b id='boldStuff2'></b> </p>
+      <p>The periapsis is <b id='periLabel'></b> </p>
+      <p>The apoapsis is <b id='apoaLabel'></b> </p>
+      <p>The difference between the periapsis and the apoapsis is <b id='difLabel'></b> </p>
+      <p>Total Energy is <b id='eLabel'></b> </p>
+      <div id="gravityChanger"><span>Change the gravity to </span><input id='currentG' size="1"><button id='buttonG'>Change</button></div>
+      <button id='invSqr'>Inverse square</button>
+      <button id='invLine'>Inverse linear</button>
+      <button id='line'>Linear</button>
+    </div>
+    <canvas id="c" width="1000" height="800"></canvas>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="main.js"></script>
 </html>

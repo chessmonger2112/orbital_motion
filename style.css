@@ -1,0 +1,16 @@
+h4 {
+    position:absolute;
+    left: 450px;
+    top: 100px;
+}
+
+#currentG {
+    position: absolute;
+    left :600px;
+    top: 120px;
+}
+#buttonG {
+    position: absolute;
+    left :642px;
+    top: 120px;
+}

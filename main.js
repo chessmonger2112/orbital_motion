@@ -1,47 +1,6 @@
-<html>
-    <head>
-
-        <style type="text/css">
-            h4 {
-                position:absolute;
-                left: 450px;
-                top: 100px;
-            }
-
-            #currentG {
-                position: absolute;
-                left :600px;
-                top: 120px;
-            }
-            #buttonG {
-                position: absolute;
-                left :642px;
-                top: 120px;
-            }
-
-        </style>
-    </head>
-
-    <body>
-        <p>The distance between the two objects is <b id='boldStuff2'></b> </p>
-        <p>The periapsis is <b id='periLabel'></b> </p>
-        <p>The apoapsis is <b id='apoaLabel'></b> </p>
-        <p>The difference between the periapsis and the apoapsis is <b id='difLabel'></b> </p>
-        <p>Total Energy is <b id='eLabel'></b> </p>
-        <h4>Change the gravity to </h4>
-        <button id='invSqr'>Inverse square</button>
-        <button id='invLine'>Inverse linear</button>
-        <button id='line'>Linear</button>
-        <input id='currentG' size="1"></input>
-        <button id='buttonG'>Change</button>
-        <canvas id="c" width="1500" height="800" style="border:1px solid #000000;"></canvas>
-
-    </body>
-	<script>
-    
-        var inverseSqr = document.getElementById("invSqr");
-        var inverseLine = document.getElementById("invLine"); 
-        var line = document.getElementById("line");               
+var inverseSqr = document.getElementById("invSqr");
+        var inverseLine = document.getElementById("invLine");
+        var line = document.getElementById("line");
         var canvas = document.getElementById("c");
         context = canvas.getContext("2d");
         var rCounter = document.getElementById('boldStuff2');
@@ -125,7 +84,7 @@
 
                 if (userSelect === null)
                 {
-                    var F = -mult * G /( 1*r2);      
+                    var F = -mult * G /( 1*r2);
                 }
                 else
                 {
@@ -158,7 +117,7 @@
 
                 pCounter.innerHTML = Math.round(100 * periapsis) / 100;
                 aCounter.innerHTML = Math.round(100 * apoapsis) / 100;
-                dCounter.innerHTML = Math.round(100 * (periapsis - apoapsis)) / 100;       
+                dCounter.innerHTML = Math.round(100 * (periapsis - apoapsis)) / 100;
                 eCounter.innerHTML = Math.round(100 * (kEnery + pEnergy)) / 100;
             }
         }
@@ -167,8 +126,5 @@
         inverseSqr.addEventListener('click', function(){userSelect = 0;}, false);
         inverseLine.addEventListener('click', function(){userSelect = 1;}, false);
         line.addEventListener('click', function(){userSelect = 2;}, false);
-        buttonG.addEventListener('click', function(){G = Number(gInput.value);}, false);    
+        buttonG.addEventListener('click', function(){G = Number(gInput.value);}, false);
         c.addEventListener('click', function(){stop = !stop;}, false);
-      
-	</script>
-</html>

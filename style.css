@@ -12,3 +12,6 @@ canvas{
 #gravityChanger{
   padding-bottom: 1%;
 }
+#line{
+  display: none;
+}

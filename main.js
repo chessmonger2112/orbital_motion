@@ -7,9 +7,9 @@ var rCounter = document.getElementById('boldStuff2');
 var pCounter = document.getElementById('periLabel');
 var aCounter = document.getElementById('apoaLabel');
 var dCounter = document.getElementById('difLabel');
-var eCounter = document.getElementById('eLabel');
+// var eCounter = document.getElementById('eLabel');
 var gInput = document.getElementById("currentG");
-var obj = {x:450, y:150, vx:22.5, vy:0};
+var planet = {x:450, y:150, vx:22.5, vy:0};
 var gravityWell = {x:300, y:300};
 var PI = Math.PI;
 var apoapsis = null;
@@ -21,12 +21,29 @@ var planetColor = "brown";
 var sunColor = "yellow";
 var space = "black";
 
+
+function rat()
+{
+  for(var i = 0; i < changeForces.length; i++)
+  {
+    changeForces[i].style.display = "none";
+  }
+}
+var changeForces = document.getElementsByClassName("force");
+for(var i = 0; i < changeForces.length; i++)
+{
+  changeForces[i].addEventListener("click",rat,false);
+}
+console.log("change forces is ",changeForces);
+
+
+
 context.rect(0,0,c.width,c.height);
 context.fillStyle = space;
 context.fill();
 
 context.beginPath();
-context.arc(obj.x,obj.y,10,0,2 * PI);
+context.arc(planet.x,planet.y,10,0,2 * PI);
 context.closePath();
 context.fillStyle = planetColor;
 context.fill();
@@ -42,8 +59,8 @@ function animate()
   if(stop != true)
   {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    var x = obj.x;
-    var y = obj.y;
+    var x = planet.x;
+    var y = planet.y;
     var gx = gravityWell.x;
     var gy = gravityWell.y;
 
@@ -80,11 +97,10 @@ function animate()
     var inverseLinear =  -G / r;
     var linear = -G * r;
     var forceArray = [inverseSquare,inverseLinear,linear];
-    var defaultF = inverseSquare;
 
     if (userSelect === null)
     {
-        var F = -mult * G /( 1*r2);
+        var F = mult * forceArray[1];
     }
     else
     {
@@ -94,12 +110,12 @@ function animate()
     var cosT = Math.cos(theta);
     var sinT = Math.sin(theta);
 
-    obj.vx += F * cosT;
-    obj.vy += F * sinT;
-    obj.x += obj.vx;
-    obj.y += obj.vy;
+    planet.vx += F * cosT;
+    planet.vy += F * sinT;
+    planet.x += planet.vx;
+    planet.y += planet.vy;
 
-    rCounter.innerHTML = Math.round(100 * r) /100;
+    rCounter.innerHTML = Math.round(100 * r) / 100;
 
     if (periapsis === null||(r > periapsis))
     {
@@ -109,21 +125,25 @@ function animate()
     {
         apoapsis = r;
     }
-
-    var vx2 = obj.vx * obj.vx;
-    var vy2 = obj.vy * obj.vy;
+    // computing and displaying values for the screen
+    var vx2 = planet.vx * planet.vx;
+    var vy2 = planet.vy * planet.vy;
     var kEnery = .5 * (vx2 + vy2);
-    var pEnergy = + -G / r;
+    var pEnergy = -G / r;
 
     pCounter.innerHTML = Math.round(100 * periapsis) / 100;
     aCounter.innerHTML = Math.round(100 * apoapsis) / 100;
     dCounter.innerHTML = Math.round(100 * (periapsis - apoapsis)) / 100;
-    eCounter.innerHTML = Math.round(100 * (kEnery + pEnergy)) / 100;
+    // eCounter.innerHTML = Math.round(100 * (kEnery + pEnergy)) / 100;
   }
 }
 var interval = setInterval(animate, 1000 / 2000);
-inverseSqr.addEventListener('click', function(){userSelect = 0;}, false);
-inverseLine.addEventListener('click', function(){userSelect = 1;}, false);
+inverseSqr.addEventListener('click', function(){
+  userSelect = 0;
+  planet.vx = 2;
+  stop=false;}, false);
+inverseLine.addEventListener('click', function(){userSelect = 1;
+  stop = false;}, false);
 line.addEventListener('click', function(){userSelect = 2;}, false);
 buttonG.addEventListener('click', function(){G = Number(gInput.value);}, false);
 c.addEventListener('click', function(){stop = !stop;}, false);
